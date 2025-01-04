@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  cursopythonitm2025:
+    image: cursopythonitm2025
+    build:
+      context: .
+      dockerfile: ./Dockerfile
