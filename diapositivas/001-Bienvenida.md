@@ -336,3 +336,24 @@ footer: Fuente: [Hireline: Perfil y sueldo de un Perfil de Desarrollador Python 
 footer: Fuente: [Reportes de salarios de TI CodersLink 2024](https://coderslink.com/wp-content/uploads/2024/04/Reporte-de-Salarios-de-TI-2024.pdf)
 -->
 
+
+---
+
+# Mitos de Python
+
+- Python es lento/rápido
+- Solo sirve para scripts o cosas pequeñas.
+- No se puede compilar.
+- No escala
+- Necesita muchos recursos
+
+
+---
+
+# Python en producción: Cuellos de botella
+
+- CPU, Memoria, I/O
+- **Estrategias**
+  - Monitoreo. 
+  - Algoritmos, Cacheo, más recursos, paralelismo/concurrencia, escribir extensiones en C/C++/Rust, usar implementaciones alternativas de librerías, o del intérprete.
+
