@@ -1,6 +1,6 @@
 ---
 marp: true
-title: "05 - Estructuras de datos: Secuencias"
+title: "06 - Estructuras de datos: Secuencias"
 ---
 
 # Aplicaciones web con Python
@@ -9,7 +9,7 @@ title: "05 - Estructuras de datos: Secuencias"
 
 ### Instituto Tecnológico de Mexicali
 
-#### 05 - Estructuras de datos: secuencias
+#### 06 - Estructuras de datos: **Secuencias**
 
 ---
 <!--
@@ -134,7 +134,7 @@ Traceback ...
 
 ---
 
-# Mutando listas
+# Mutabilidad de listas
 
 ```python
 >>> t = [1, 2, 3, 4]
@@ -166,3 +166,38 @@ Traceback ...
 >>> t
 [400, 4, 3, 1]
 ```
+
+---
+
+# Secuencias: texto `str`
+
+## Rebanadas e índices
+  
+```python
+>>> c = 'Hola Mundo'
+>>> c[0]
+'H'
+>>> c[3]
+'a'
+>>> c[1:3]
+'ol'
+>>> c[­1]
+'o'
+>>> c[­3:­1]
+'nd'
+>>> c[2:]
+'la Mundo'
+>>> c[2:][­1]
+'o'
+```
+
+---
+
+# Tuplas vs listas vs Texto
+
+| Tuplas                               | Listas                               | Texto |
+|--------------------------------------|------------------------------------- | ------------ |
+| Colección ***finita*** de objetos    | Colección ***infinita***  de objetos | Secuencia de ***puntos de codigo*** unicode. |
+| Delimitado por `()` (opcional)       | Delimitado por `[]`                  | Delimitado por `'` o `"` |
+| **Inmutable**                        | **Mutable**                          | **Inmutable** |
+
