@@ -137,7 +137,6 @@ c = 10
 while c:
     print(c)
     c -= 1
-
 ```
 
 ---
@@ -145,7 +144,6 @@ while c:
 # Indentación con espacios
 
 ```python
-
 class Animal:
     sonido = "..."
     def habla(self):
@@ -161,7 +159,6 @@ class Gato(Animal):
 
     def salta(self):
         pass
-
 ```
 
 ---

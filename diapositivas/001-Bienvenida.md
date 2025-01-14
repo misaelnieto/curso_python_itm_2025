@@ -11,6 +11,8 @@ theme: curso-python
 
 ### Instituto Tecnológico de Mexicali
 
+![bg right](imagenes/taller.jpg)
+
 ---
 
 ```python

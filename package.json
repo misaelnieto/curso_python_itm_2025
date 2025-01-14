@@ -5,9 +5,9 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-      "build": "rimraf public && npm run -s og-image && npm run -s deck",
+      "build": "rimraf _public && npm run -s og-image && npm run -s deck",
       "deck": "marp --no-stdin README.md -o public/index.html && ncp assets public/assets",
-      "og-image": "marp --no-stdin README.md -o public/og-image.jpg",
+      "og-image": "marp --no-stdin diapositivas/README.md -o diapositivas/imagenes/og-image.jpg",
       "start": "marp -ps .",
       "vercel-build": "yum install nss mesa-libgbm -y && MARP_USER=root CHROME_PATH=$(npx -y @puppeteer/browsers@latest install chrome@stable --path $(realpath ./tmp) | awk '{print $2}') npm run build"
     },
@@ -18,8 +18,7 @@
     },
     "marp": {
         "inputDir": "./diapositivas",
-        "output": "./public",
-        "themeSet": "./themes",
+        "output": "./_public",
         "author": "Noe Nieto",
         "description": "Curso de introduccion a Python con aplicaciones web",
         "bespoke": {
