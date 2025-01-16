@@ -357,12 +357,6 @@ Se usa la función `float()` para convertir valores a números de coma flotante.
 *   Es útil usar `.strip()` para eliminar espacios en blanco antes de convertir una cadena a float.
 
 
-
 ---
 
-# Resumen
-
-
----
-
-# Siguiente: [Programacion Orientada a Objetos →](201-Objetos.md)
+# Siguiente: [Estructuras de control de flujo →](201-Control-de-flujo.md)
