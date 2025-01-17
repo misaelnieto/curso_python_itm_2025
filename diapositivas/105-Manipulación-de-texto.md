@@ -151,12 +151,12 @@ TypeError: 'str' object does not support item assignment
 # Texto con líneas múltiples
 
 ```python
->>> """
+>>> a = """
 ... Cadena con multiples lineas.
 ... Puede contener " y ' sin problemas.
 ... """
 '\nCadena con multiples lineas.\nPuede contener " y \' sin problemas.\n'
->>> print(_)
+>>> print(a)
 Cadena con multiples lineas.
 Puede contener " y ' sin problemas.
 ```
