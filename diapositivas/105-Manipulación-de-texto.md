@@ -155,7 +155,6 @@ TypeError: 'str' object does not support item assignment
 ... Cadena con multiples lineas.
 ... Puede contener " y ' sin problemas.
 ... """
-'\nCadena con multiples lineas.\nPuede contener " y \' sin problemas.\n'
 >>> print(a)
 Cadena con multiples lineas.
 Puede contener " y ' sin problemas.
