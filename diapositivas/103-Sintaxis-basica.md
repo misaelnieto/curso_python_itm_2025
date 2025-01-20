@@ -13,12 +13,19 @@ theme: curso-python
 
 ![bg right](imagenes/ast.jpg)
 
+
 ---
 <!--
 paginate: true
 header: Aplicaciones web con Python
 footer: Instituto Tecnológico de Mexicali
 -->
+
+Acceso a google colab
+
+https://colab.research.google.com/github/misaelnieto/curso_python_itm_2025/blob/main/practicas/Sintaxis_b%C3%A1sica_de_Python.ipynb
+
+---
 
 # Todo es un objeto
 
