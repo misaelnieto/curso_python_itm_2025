@@ -11,6 +11,8 @@ theme: curso-python
 
 ### 2005 - Instituto Tecnológico de Mexicali
 
+#### https://tinyurl.com/pyitm2025
+
 ![bg right](imagenes/flask.jpg)
 
 ---
@@ -456,7 +458,7 @@ def movimientos():
 <div class="col">
 
 - ORM para Python
-- Dialectos soportados: SQLite, Postgresql, MySQL/MariaDB, Oracle, MS SQLServer. +30 dialectos soportados mediante librerías externas.
+- Dialectos soportados: **SQLite**, Postgresql, MySQL/MariaDB, Oracle, MS SQLServer. +30 dialectos soportados mediante librerías externas.
 - **Flask-SQLAlchemy**: integración de Flask con modelos de SQLAlchemy
 </div>
 </div>
@@ -469,9 +471,71 @@ uv add Flask-SQLAlchemy
 
 ---
 
+# Configurar ORM
+
+<div class="columnas">
+<div class="col">
+
+- Importar `SQLAlchemy` y `click`
+- Definir URI de la base de datos
+- Escribir clase para `Movimiento`
+- Escribir script para inicializar la bd
+  - Correr script
+  - Verificar que la bd se escribió
+
+</div>
+<div class="col">
+
+```python
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
+import click
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///alcancia.db"
+db = SQLAlchemy(app)
+
+
+class Movimiento(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fecha = db.Column(db.DateTime, server_default=func.now())
+    cantidad = db.Column(db.Numeric)
+
+
+@app.cli.command()
+def initdb():
+    """
+    Inicializa la base de datos de la alcancia
+    """
+    click.echo('Inicializando la base de datos')
+    db.create_all()
+```
+
+</div>
+</div>
 
 
 ---
+
+# Persistir datos en la BD: depósitos
+
+```python
+depo = Movimiento(cantidad=cantidad)
+db.session.add(depo)
+db.session.commit()
+```
+
+
+---
+
+
+# Actividad
+
+Implementar la ruta de retiros
+
+---
+
+# Reporte de saldo
+
 
 
 # Siguiente: [Agregando un API Rest →](302-REST.md)

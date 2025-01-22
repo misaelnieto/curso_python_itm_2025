@@ -11,6 +11,8 @@ theme: curso-python
 
 ### 2005 - Instituto Tecnológico de Mexicali
 
+#### https://tinyurl.com/pyitm2025
+
 ![bg right](imagenes/control-flujo.jpg)
 
 ---
@@ -165,7 +167,7 @@ for n in range(2, 10):
 <div class="columnas">
 <div class="col">
 
-En un bucle `for`, se puede usar la cláusula `else` para ejecutar instrucciones **después de que el bucle termina su iteración final**, con la condición de que el bucle haya terminado por causa de un `break`, una excepción o `return`.
+En un bucle `for`, se puede usar la cláusula `else` para ejecutar instrucciones **después de que el bucle termina su iteración final**, con la condición de que el bucle ***NO*** haya terminado por causa de un `break`, una excepción o `return`.
 
 
 </div>

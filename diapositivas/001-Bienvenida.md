@@ -11,6 +11,8 @@ theme: curso-python
 
 ### Instituto Tecnológico de Mexicali
 
+#### https://tinyurl.com/pyitm2025
+
 ![bg right](imagenes/taller.jpg)
 
 ---

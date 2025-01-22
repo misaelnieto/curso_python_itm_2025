@@ -11,6 +11,8 @@ theme: curso-python
 
 ### 2005 - Instituto Tecnológico de Mexicali
 
+#### https://tinyurl.com/pyitm2025
+
 ![bg right](imagenes/funciones.jpg)
 
 ---
