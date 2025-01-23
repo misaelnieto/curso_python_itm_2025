@@ -141,10 +141,10 @@ El archivo `__init__.py` puede estar vacío, pero su presencia indica a Python q
 
 ```
 mi_paquete/
-├── init.py
+├── __init__.py
 ├── modulo1.py
 └── subpaquete/
-    ├── init.py
+    ├── __init__.py
     └── modulo2.py
 ```
 

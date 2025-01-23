@@ -2,7 +2,7 @@
 
 Hecha en Flask
 
-# Instalación
+# Instalación en modo desarrollo
 
 - Instalar UV desde https://docs.astral.sh/uv/getting-started/installation/
 - Instalar virtualenv:
