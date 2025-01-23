@@ -23,43 +23,103 @@ header: Aplicaciones web con Python
 footer: Instituto Tecnológico de Mexicali
 -->
 
-# Aplicación web con Flask
 
-- [Flask](https://flask.palletsprojects.com/en/stable/)
-  - Servidor web
-  - Plantillas html (Jinja)
-  - CLI
-- [Flask-Restless](https://flask-restless.readthedocs.io/en/stable/)
-  - [SQLAlchemy](https://www.sqlalchemy.org/)
+# Proyecto: Alcancía
+
+- Alcancía es una aplicacion web que
+  - Registra depósitos
+  - Registra retiros
+  - Despliega un balance del dinero que contiene
+
+![bg left ](imagenes/alcancia.jpg)
 
 ---
 
-# Proyecto: alcancía
+# Solucion: Aplicación web con Flask
 
-- Alcancía es una aplicacion web que
-  - Mantiene un balance del dinero que contiene
-  - Registra depósitos
-  - Registra retiros
+
+- [Flask](https://flask.palletsprojects.com/en/stable/)
+  - Servidor web
+  - Plantillas html ([Jinja2](https://jinja.palletsprojects.com/en/stable/)).
+    - [Bulma CSS](https://bulma.io/)
+  - API JSON
+  - Interfaz de línea de comandos
+  - Base de datos:
+    - [SQLite](https://sqlite.org/)
+    - [SQLAlchemy](https://www.sqlalchemy.org/) ORM de Python
+    - [Flask-SQLAlchemy](https://flask-sqlalchemy.readthedocs.io/en/stable/): Extensión que simplifica el uso de `SQLAlchemy` en apps de `Flask`.
+
+
+---
+
+# Herramientas de desarrollo
+
+- VSCode con el plugin de Python
+  - `ctrl`+`shift`+`P`
+  - Extensions: Install extensions
+  - `ms-python.python`
+- UV, el administrador de proyectos en python (ver siguiente diapositiva)
+- Descargar **DB Browser for SQLite** desde https://sqlitebrowser.org/
+
+![bg right:40%](imagenes/herramientas.jpg)
+
+---
+
+# Instalación de `uv`
+
+https://docs.astral.sh/uv/#getting-started
+
+<div class="columnas">
+<div class="col">
+
+## MacOS/Linux
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+</div>
+<div class="col">
+
+## Windows
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+</div>
+</div>
+
 
 ---
 
 # Creación del proyecto
 
-Creamos el proyecto inicial con `uv`
+- En una ventana de *PowerShell* creamos el proyecto inicial con `uv`
+  ```
+  uv init alcancia
+  cd alcancia
+  uv run .\hello.py
+  ```
+- Abrir la carpeta `alcancia` en **vscode**:
+  > *Archivo* > *Abrir carpeta*.
+- Abrir una terminal en **vscode**
+- Ya podemos cerrar la ventana de *PowerShell*.
 
-```
-uv init alcancia
-cd alcancia
-uv run .\hello.py
-```
+![bg left:40% w:98%](imagenes/vscode.png)
 
-Instalamos Flask
+---
+
+# Instalación de Flask
+
+En la terminal de vscode:
 
 ```
 uv add Flask
 ```
 
-
+![bg left w:95%](imagenes/flask-horizontal.webp)
 
 ---
 
@@ -143,10 +203,15 @@ Layout de plantillas:
 - `retiro.html`
 - `movimientos.html`
 
+
+![bg right:20% w:85%](imagenes/jinja-name.png)
+
 ---
 
 
 # Plantilla base
+
+![alt text](imagenes/bulma-logo.png)
 
 - Flask no tiene un framework CSS, ni JS.
 - Usaremos BulmaCSS. https://bulma.io/documentation/start/overview/#starter-template
@@ -436,14 +501,25 @@ def movimientos():
 # Lo que tenemos hasta ahora
 
 - Aplicación básica con 4 rutas
-- Plantilla base configurada
-- Reporte de saldo
-- Dos formularios: depósitos y retiros
-- Reporte de movimientos
+  1. Plantilla base configurada
+  1. Reporte de saldo
+  1. Dos formularios: depósitos y retiros
+  1. Reporte de movimientos
 
-## Lo que sigue
+## Siguiente paso
 
 - Persistencia de datos
+
+---
+# Click
+
+
+> Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary. It’s the “***Command Line Interface Creation Kit***”. It’s highly configurable but comes with sensible defaults out of the box.
+
+**Flask** usa `click` internamente para implementar su línea de comandos. Y nosotros podemos agregar subcomandos al comando `flask`
+
+
+![bg left:40% w:100%](imagenes/click-name.png)
 
 ---
 
@@ -480,8 +556,6 @@ uv add Flask-SQLAlchemy
 - Definir URI de la base de datos
 - Escribir clase para `Movimiento`
 - Escribir script para inicializar la bd
-  - Correr script
-  - Verificar que la bd se escribió
 
 </div>
 <div class="col">
@@ -513,6 +587,24 @@ def initdb():
 </div>
 </div>
 
+---
+
+# El comando initdb
+
+- Primero verificar que el comando ya esta disponible
+
+```
+uv run flask
+[...]
+Commands:
+  initdb  Inicializa la base de datos de la alcancia
+  routes  Show the routes for the app.
+  run     Run a development server.
+  shell   Run a shell in the app context.
+```
+
+- Crea la base de datos en `instance/alcancia.db`
+- Abrir la base de datos en **DB Browser (SQLite)** y confirmar que se ha creado la estructura de la BD.
 
 ---
 
@@ -536,6 +628,70 @@ Implementar la ruta de retiros
 
 # Reporte de saldo
 
+
+- En `app.py`
+  ```python
+  from sqlalchemy.sql import func
+
+  @app.route("/")
+  def saldo():
+      return render_template(
+          'saldo.html',
+          saldo=db.session.scalar(func.sum(Movimiento.cantidad))
+      )
+  ```
+- En `templates/saldo.html`
+```html
+{% block contenido %}
+  <h2>El saldo es <b> {{"$%.2f"|format(saldo)}} </b></h2>
+{% endblock %}
+```
+
+---
+
+# Reporte de movimientos
+
+En `app.py`
+
+```python
+@app.route("/movimientos")
+def movimientos():
+    q = db.session.execute(db.select(Movimiento).order_by(Movimiento.fecha))
+    return render_template('movimientos.html', movimientos=q.scalars())
+```
+
+---
+
+# Reporte de movimientos
+
+
+En `templates/saldo.html`
+
+```html
+{% block contenido %}
+  <table class="table is-bordered is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <td class="is-primary">Fecha</td>
+        <td class="is-info">Cantidad</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in movimientos %}
+      <tr>
+        <td>{{ m.fecha }}</td>
+        <td>{{ "${:,.2f}".format(m.cantidad) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+```
+
+</div>
+</div>
+
+---
 
 
 # Siguiente: [Agregando un API Rest →](302-REST.md)

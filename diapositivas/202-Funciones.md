@@ -511,7 +511,7 @@ def duplica(x):
 l1 = [7,2]
 l2 = duplica(l1)
 print(l1, l2)
-(7, 2) (7, 2, 7, 2)
+[7, 2] [7, 2, 7, 2]
 ```
 
 </div>
@@ -703,7 +703,7 @@ Este ejemplo crea un decorador que imprime un mensaje antes y después de ejecut
 ```python
 def mi_decorador(funcion):
     def funcion_envolvente(*args, **kwargs):
-        print("Antes de llamar a la función.")
+        print(f"Antes de llamar a la función {funcion.__name__}()")
         resultado = funcion(*args, **kwargs)
         print("Después de llamar a la función.")
         return resultado
