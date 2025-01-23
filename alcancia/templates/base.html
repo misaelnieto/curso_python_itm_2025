@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alcancia</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Alcancía
+          </a>
+    
+          <a class="navbar-item" href="/deposito">
+            Depósito
+          </a>
+          <a class="navbar-item" href="/retiro">
+            Retiro
+          </a>
+          <a class="navbar-item" href="/movimientos">
+            Movimientos
+          </a>
+        </div>
+      </div>
+    </nav>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        {% block titulo %}{% endblock %}
+      </h1>
+      <div class="content">
+        <div class="block">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <div class="notificaciones">
+              {% for category, message in messages %}
+                <div class="notification {{ category }}">
+                  <button class="delete"></button>
+                  {{ message }}
+                </div>
+              {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="block">
+          {% block contenido %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+  </body>
+</html>

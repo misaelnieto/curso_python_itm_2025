@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Depósito{% endblock %}
+{% block contenido %}
+  <form method="POST">
+    {% if error %}
+    <article class="message is-danger">
+        <div class="message-body">
+            Cantidad invalida
+        </div>
+    </article>
+    {% endif %}
+    <div class="field has-addons">
+        <div class="control">
+            <input class="input is-large" 
+            type="number"
+            min="0" 
+            step="0.01" 
+            placeholder="$ 0.00" 
+            name="cantidad">
+        </div>
+        <div class="control">
+            <input type="submit" value="&#x1FA99; Depositar" class="button is-info is-large">
+        </div>
+    </div>
+  </form>
+{% endblock %}

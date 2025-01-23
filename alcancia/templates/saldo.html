@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block titulo %}Saldo{% endblock %}
+{% block contenido %}
+  <h2>El saldo es <b> {{"$%.2f"|format(saldo)}} </b></h2>
+{% endblock %}

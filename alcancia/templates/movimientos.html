@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}Movimientos{% endblock %}
+{% block contenido %}
+  <table class="table is-bordered is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <td class="is-primary">Fecha</td>
+        <td class="is-info">Cantidad</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in movimientos %}
+      <tr>
+        <td>{{ m.fecha }}</td>
+        <td>{{ "${:,.2f}".format(m.cantidad) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
